@@ -1,0 +1,36 @@
+.h1 {
+  font-size: 54px;
+  color: #111111;
+  font-weight: 900;
+  line-height: 90%;
+  white-space: normal;
+
+  @media (max-width: 320px) {
+    font-size: 34px;
+  }
+}
+
+.title {
+  font-size: 16px;
+  color: #575757;
+  font-weight: 400;
+  font-family: 'Gilroy';
+  line-height: 20px;
+
+  @media (max-width: 320px) {
+    font-size: 14px;
+    line-height: 136%;
+  }
+}
+
+.result {
+  font-size: 54px;
+  color: #333333;
+  font-weight: 900;
+  line-height: 90%;
+
+  @media (max-width: 320px) {
+    font-size: 22px;
+    line-height: 20px;
+  }
+}
