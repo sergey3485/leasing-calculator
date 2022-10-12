@@ -11,6 +11,7 @@ export interface SliderProps {
   maxValue: number;
   onValueChange: (value: number[]) => void;
   value: number;
+  variant?: 'percent' | 'default',
 }
 
 export const Slider = (props: SliderProps): JSX.Element => {
@@ -19,11 +20,12 @@ export const Slider = (props: SliderProps): JSX.Element => {
     maxValue,
     onValueChange,
     value,
+    variant = 'default',
   } = props;
 
   return (
     <SliderPrimitive.Root
-      className={styles.root}
+      className={variant === 'default' ? styles.rootPercent : styles.root}
       min={minValue}
       max={maxValue}
       step={1}
