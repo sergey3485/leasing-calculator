@@ -55,10 +55,11 @@ export const Input = (props: InputProps): JSX.Element => {
               maxValue={maxValue}
               minValue={minValue}
               value={Number(value)}
+              variant="percent"
             />
           </div>
 
-          <input className={styles.input} value={value.toLocaleString('ru')} type="text" maxLength={9} {...other} />
+          <input className={styles.input} value={value.toLocaleString('ru')} type="text" {...other} />
 
           <span className={styles.sign}>
             {addiction}
