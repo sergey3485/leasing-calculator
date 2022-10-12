@@ -29,11 +29,13 @@
         "namedComponents": "arrow-function"
       }
     ],
+    "@typescript-eslint/no-misused-promises": "off",
     "react/react-in-jsx-scope": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "arrow-body-style": 0,
     "react/jsx-props-no-spreading": "off",
+    "eslint-disable-next-line react/jsx-one-expression-per-line": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
