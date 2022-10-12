@@ -5,7 +5,7 @@
   line-height: 90%;
   white-space: normal;
 
-  @media (max-width: 320px) {
+  @media (max-width: 767px) {
     font-size: 34px;
   }
 }
@@ -17,7 +17,7 @@
   font-family: 'Gilroy';
   line-height: 20px;
 
-  @media (max-width: 320px) {
+  @media (max-width: 767px) {
     font-size: 14px;
     line-height: 136%;
   }
@@ -29,7 +29,7 @@
   font-weight: 900;
   line-height: 90%;
 
-  @media (max-width: 320px) {
+  @media (max-width: 767px) {
     font-size: 22px;
     line-height: 20px;
   }
