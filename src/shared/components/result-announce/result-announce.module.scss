@@ -4,11 +4,20 @@
 }
 
 .wrapper {
-  display: flex;
   margin-top: 8px;
   vertical-align: bottom;
+  display: flex;
 
   @media (max-width: 767px) {
     margin-top: 2px;
+  }
+}
+
+.sign {
+  position: relative;
+  top: -4px;
+
+  @media (max-width: 767px) {
+    top: -2px;
   }
 }

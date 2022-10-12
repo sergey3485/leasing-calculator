@@ -22,10 +22,11 @@ export const ResultAnnounce = (props: ResultAnnounceProps): JSX.Element => {
         <Typography component="span" variant="result">
           {value.toLocaleString('ru')}
         </Typography>
-
-        <Typography component="span" variant="result">
-          ₽
-        </Typography>
+        <div className={styles.sign}>
+          <Typography component="span" variant="result">
+            ₽
+          </Typography>
+        </div>
       </div>
     </div>
   );

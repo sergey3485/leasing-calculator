@@ -47,6 +47,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 32px;
+  align-items: flex-end;
 
   @media (max-width: 1119px) and (min-width: 767px) {
     display: grid;
