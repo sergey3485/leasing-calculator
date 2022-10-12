@@ -12,20 +12,30 @@
   font-family: inherit;
   font-weight: 900;
   width: 100%;
-  @media (max-width: 320px) {
+  max-width: 345px;
+
+  @media (max-width: 767px) {
     font-size: 22px;
+    max-width: 345px;
   }
+
   &:hover {
     background-color: black;
-  };
+  }
+
   &:active {
     background-color: #575757;
-  };
+  }
 
   &:disabled {
     cursor: default;
     opacity: 40%;
-  };
+
+    &:hover {
+      background-color: #FF9514;
+    }
+  }
+
 }
 
 .loaderWrapper {
@@ -43,6 +53,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
