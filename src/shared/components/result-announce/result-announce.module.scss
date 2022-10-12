@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 8px;
+  vertical-align: bottom;
+
+  @media (max-width: 767px) {
+    margin-top: 2px;
+  }
+}
