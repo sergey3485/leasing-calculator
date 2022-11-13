@@ -10,7 +10,7 @@ export interface SliderProps {
   minValue: number;
   maxValue: number;
   onValueChange: (value: number[]) => void;
-  value: number;
+  value: string;
   variant?: 'percent' | 'default',
 }
 
@@ -30,7 +30,7 @@ export const Slider = (props: SliderProps): JSX.Element => {
       max={maxValue}
       step={1}
       onValueChange={onValueChange}
-      value={[limitNumberWithinRange(value, minValue, maxValue)]}
+      value={[limitNumberWithinRange(Number(value), minValue, maxValue)]}
     >
       <SliderPrimitive.Track className={styles.track}>
         <SliderPrimitive.Range className={styles.range} />
