@@ -6,7 +6,7 @@ import styles from './result-announce.module.scss';
 
 export interface ResultAnnounceProps {
   title: string;
-  value: string;
+  value: number;
 }
 
 export const ResultAnnounce = (props: ResultAnnounceProps): JSX.Element => {
@@ -20,7 +20,7 @@ export const ResultAnnounce = (props: ResultAnnounceProps): JSX.Element => {
 
       <div className={styles.wrapper}>
         <Typography component="span" variant="result">
-          {value}
+          {value.toLocaleString('ru')}
         </Typography>
         <div className={styles.sign}>
           <Typography component="span" variant="result">

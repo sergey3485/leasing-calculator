@@ -4,18 +4,12 @@ import { useUnit } from 'effector-react';
 import { Button } from './shared/components/button';
 import { Typography } from './shared/components/typography';
 import {
-  $autoCost,
   $monthlyPayment,
   $fullSum,
-  $leasingTerms,
   $firstPayment,
-  $paymentPercent,
-  changeAutoCost,
-  changeSliderAutoCostValue,
-  changeLeasingTerms,
-  changeLeasingTermsSliderValue,
-  changeFirstPaymentPercent,
-  changeFirstPaymentPercentSliderValue,
+  autoInput,
+  termsInput,
+  percentInput,
 } from './features/logic/calculator.model';
 import { InputPercent, InputTest } from './shared/components/input';
 import { Layout } from './shared/components/layout';
@@ -32,12 +26,21 @@ export const App = () => {
     firstPayment,
     paymentPercent,
   } = useUnit({
-    autoCost: $autoCost,
+    autoCost: autoInput.$inputValue,
     monthlyPayment: $monthlyPayment,
     fullSum: $fullSum,
-    leasingTerms: $leasingTerms,
+    leasingTerms: termsInput.$inputValue,
     firstPayment: $firstPayment,
-    paymentPercent: $paymentPercent,
+    paymentPercent: percentInput.$inputValue,
+  });
+
+  console.log({
+    autoCost,
+    monthlyPayment,
+    fullSum,
+    leasingTerms,
+    firstPayment,
+    paymentPercent,
   });
 
   const [isLoading, setIsLoading] = React.useState(false);
@@ -82,8 +85,8 @@ export const App = () => {
           title="Стоимость автомобиля"
           addiction="₽"
           // onBlur={() => lostFocusAutoCost()}
-          onChange={((event) => changeAutoCost(event.currentTarget.value))}
-          onSliderValueChange={(event) => changeSliderAutoCostValue(event[0].toString())}
+          onValueChange={autoInput.changeInputValue}
+          onSliderValueChange={(event) => autoInput.changeInputValueSlider(event[0])}
           minValue={1000000}
           maxValue={6000000}
           value={autoCost}
@@ -93,23 +96,24 @@ export const App = () => {
         <InputPercent
           title="Первоначальный взнос"
           addiction="%"
-          onChange={(event) => changeFirstPaymentPercent(event.currentTarget.value)}
-          onSliderValueChange={(event) => changeFirstPaymentPercentSliderValue(event[0].toString())}
+          onValueChange={percentInput.changeInputValue}
+          onSliderValueChange={(event) => percentInput.changeInputValueSlider(event[0])}
           value={paymentPercent}
           initialPayment={firstPayment}
           minValue={10}
-          maxValue={60}
+          maxValue={40}
           disabled={isLoading}
         />
 
         <InputTest
           title="Срок лизинга"
           addiction="мес."
-          onChange={(event) => changeLeasingTerms(event.currentTarget.value)}
-          onSliderValueChange={(event) => changeLeasingTermsSliderValue(event[0].toString())}
-          value={leasingTerms}
+          // onChange={(event) => changeLeasingTerms(event.currentTarget.value)}
+          onValueChange={termsInput.changeInputValue}
+          onSliderValueChange={(event) => termsInput.changeInputValueSlider(event[0])}
           minValue={1}
           maxValue={60}
+          value={leasingTerms}
           disabled={isLoading}
         />
       </div>

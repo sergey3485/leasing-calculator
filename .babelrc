@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    [
+      "effector/babel-plugin",
+      {
+        "factories": ["src/features/logic/calculator.model"]
+      }
+    ]
+  ]
+}
