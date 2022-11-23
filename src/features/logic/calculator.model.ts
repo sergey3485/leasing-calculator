@@ -5,7 +5,6 @@ import {
   createStore,
   Store,
   Event,
-  Effect,
 } from 'effector';
 
 import {
@@ -13,6 +12,7 @@ import {
   getInitialPayment,
   getMonthlyPayment,
   limitNumberWithinRange,
+  isNumeric,
 } from '../lib';
 
 export interface InputLogicModel {
@@ -25,14 +25,19 @@ export interface InputLogicModel {
 const inputLogic = (defaultValue: number, min: number, max: number) => {
   const $inputValue = createStore<number>(defaultValue);
 
-  const changeInputValue = createEvent<number>();
+  const changeInputValue = createEvent<string>();
 
   const changeInputValueSlider = createEvent<number>();
 
-  const onInputBlur = createEvent<number>();
+  const onInputBlur = createEvent();
 
   sample({
     clock: [changeInputValue, changeInputValueSlider],
+    filter: (data) => isNumeric(data.toString()),
+    fn: (data) => {
+      if (typeof data === 'number') return data;
+      return Number(data.replace(/\s/g, ''));
+    },
     target: $inputValue,
   });
 
@@ -71,8 +76,8 @@ sample({
 });
 
 sample({
-  clock: [$firstPayment, autoInput.$inputValue, percentInput.$inputValue],
-  source: [$firstPayment, autoInput.$inputValue, percentInput.$inputValue],
+  clock: [$firstPayment, autoInput.$inputValue, termsInput.$inputValue],
+  source: [$firstPayment, autoInput.$inputValue, termsInput.$inputValue],
   fn: (data) => getMonthlyPayment(data[0], limitNumberWithinRange(data[1], 1000000, 6000000), limitNumberWithinRange(data[2], 1, 60)),
   target: $monthlyPayment,
 });

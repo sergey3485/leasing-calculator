@@ -34,15 +34,6 @@ export const App = () => {
     paymentPercent: percentInput.$inputValue,
   });
 
-  console.log({
-    autoCost,
-    monthlyPayment,
-    fullSum,
-    leasingTerms,
-    firstPayment,
-    paymentPercent,
-  });
-
   const [isLoading, setIsLoading] = React.useState(false);
 
   // const createRequest = async () => {
@@ -85,7 +76,8 @@ export const App = () => {
           title="Стоимость автомобиля"
           addiction="₽"
           // onBlur={() => lostFocusAutoCost()}
-          onValueChange={autoInput.changeInputValue}
+          onChange={(event) => autoInput.changeInputValue(event.currentTarget.value)}
+          onBlur={() => autoInput.onInputBlur()}
           onSliderValueChange={(event) => autoInput.changeInputValueSlider(event[0])}
           minValue={1000000}
           maxValue={6000000}
@@ -96,7 +88,9 @@ export const App = () => {
         <InputPercent
           title="Первоначальный взнос"
           addiction="%"
-          onValueChange={percentInput.changeInputValue}
+          onChange={(event) => percentInput.changeInputValue(event.currentTarget.value)}
+          onBlur={() => percentInput.onInputBlur()}
+          // onValueChange={percentInput.changeInputValue}
           onSliderValueChange={(event) => percentInput.changeInputValueSlider(event[0])}
           value={paymentPercent}
           initialPayment={firstPayment}
@@ -108,8 +102,9 @@ export const App = () => {
         <InputTest
           title="Срок лизинга"
           addiction="мес."
-          // onChange={(event) => changeLeasingTerms(event.currentTarget.value)}
-          onValueChange={termsInput.changeInputValue}
+          onChange={(event) => termsInput.changeInputValue(event.currentTarget.value)}
+          onBlur={() => termsInput.onInputBlur()}
+          // onValueChange={termsInput.changeInputValue}
           onSliderValueChange={(event) => termsInput.changeInputValueSlider(event[0])}
           minValue={1}
           maxValue={60}
