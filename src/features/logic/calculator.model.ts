@@ -22,7 +22,7 @@ export interface InputLogicModel {
   onInputBlur: Event<number>;
 }
 
-const inputLogic = (defaultValue: number, min: number, max: number) => {
+const createInput = (defaultValue: number, min: number, max: number) => {
   const $inputValue = createStore<number>(defaultValue);
 
   const changeInputValue = createEvent<string>();
@@ -56,11 +56,11 @@ const inputLogic = (defaultValue: number, min: number, max: number) => {
   };
 };
 
-export const autoInput = inputLogic(1000000, 1000000, 6000000);
+export const autoInput = createInput(1000000, 1000000, 6000000);
 
-export const percentInput = inputLogic(10, 10, 40);
+export const percentInput = createInput(10, 10, 40);
 
-export const termsInput = inputLogic(1, 1, 60);
+export const termsInput = createInput(1, 1, 60);
 
 export const $firstPayment = createStore<number>(getInitialPayment(10, 1000000));
 
